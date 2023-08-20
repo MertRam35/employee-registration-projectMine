@@ -3,11 +3,9 @@ package com.mert.model;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.time.LocalDate;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -15,27 +13,27 @@ import java.time.LocalDate;
 @ToString
 public class Employee {
 
-@NotBlank
-@Size(max = 12,min = 2)
-  private  String firstName;
-@Size(max = 12,min = 2)
-  private  String lastName;
+    @NotBlank
+    @Size(max = 12, min = 2)
+    private String firstName;
+    @Size(max = 12, min = 2)
+    private String lastName;
+    @NotNull//thymeleaf accepts yyyy-MM-dd but local date mm-dd-yyyy
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate birthday;
 
-  //thymeleaf accepts yyyy-MM-dd but local date mm-dd-yyyy
-  @DateTimeFormat(pattern = "yyyy-MM-dd")
-  private LocalDate birthday;
+    @NotBlank
+    @Email
+    private String email;
 
-  private  String email;
-  private  String password;
-  private  String address;
-  private  String address2;
-  private  String city;
-  private  String state;
-  private  String zipCode;
-
-
-
-
+    @NotBlank
+ //   @Pattern(regexp = "(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{4,}")
+    private String password;
+    private String address;
+    private String address2;
+    private String city;
+    private String state;
+    private String zipCode;
 
 
 }
