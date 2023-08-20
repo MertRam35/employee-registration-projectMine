@@ -3,6 +3,10 @@ package com.mert.model;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 @Getter
 @Setter
@@ -11,12 +15,16 @@ import java.time.LocalDate;
 @ToString
 public class Employee {
 
+@NotBlank
+@Size(max = 12,min = 2)
   private  String firstName;
+@Size(max = 12,min = 2)
   private  String lastName;
 
   //thymeleaf accepts yyyy-MM-dd but local date mm-dd-yyyy
   @DateTimeFormat(pattern = "yyyy-MM-dd")
   private LocalDate birthday;
+
   private  String email;
   private  String password;
   private  String address;
